@@ -35,16 +35,16 @@ public class IntervalManager {
                 new Integer[] { 25,  2, 25,  2,  2,  3 } ,
                 new Integer[] { 28,  4, 26,  3  },
                 new Integer[] { 60,  3  },
-                new Number [] {  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1  } // for tests
+                new Number [] {  0.1, 0.05, 0.1, 0.02, 0.1, 0.05, 0.1, 0.05, 0.1, 0.05,  0.1  } // for tests
         };
         IntervalType types[] = new IntervalType[] { RUN, WALK };
         for (int s = 0 ; s < lstWeeks.length ; s++) {
-            Number[] semaine = lstWeeks[s];
-            List<IntervalDescription> lst = new ArrayList<IntervalDescription>(semaine.length + 1);
+            Number[] week = lstWeeks[s];
+            List<IntervalDescription> lst = new ArrayList<IntervalDescription>(week.length + 1);
             lst.add(new IntervalDescription(WARM_UP, (long) (10.0 * SECOND)));
             int type = 0;
-            for (int i = 0 ; i < semaine.length ; i++) {
-                lst.add(new IntervalDescription(types[type], (long) (semaine[i].doubleValue() * MINUTE)));
+            for (int i = 0 ; i < week.length ; i++) {
+                lst.add(new IntervalDescription(types[type], (long) (week[i].doubleValue() * MINUTE)));
                 type = 1 - type;
             }
             mapWeeks.put(s + 1, lst);

@@ -14,4 +14,5 @@
     <string name="countDown">temps restant</string>
     <string name="display">Afficher:</string>
     <string name="fractions">fractions</string>
+    <string name="finished">Terminé</string>
 </resources>

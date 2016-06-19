@@ -337,7 +337,7 @@ public class Chronos extends Activity {
         }
 
         if (label != null) {
-            sb.append(" - ").append(label);
+            sb.append(" \u21D2 ").append(label);
         }
 
         if (tv == null) {
@@ -402,8 +402,8 @@ public class Chronos extends Activity {
                             } else {
                                 state = STOPPED_STATE;
                                 startBtn.setText(R.string.reStart);
-                                countText.setText("Finished");
-                                countInvText.setText("Finished");
+                                countText.setText(R.string.finished);
+                                countInvText.setText(R.string.finished);
                                 setTextColor(null, COUNT_STOPPED_COLOR);
                                 displayedTime = 0;
                                 setCurInterval(-1);
