@@ -17,7 +17,7 @@ public class IntervalManager {
     private static Map<Integer, List<IntervalDescription>> mapWeeks = new HashMap<Integer, List<IntervalDescription>>();
 
     static {
-        Integer[][] lstWeeks = new Integer[][] {
+        Number[][] lstWeeks = new Number[][] {
                 new Integer[] {  2,  2,  2,  2,  2,  2,  2,  3 } ,
                 new Integer[] {  2,  2,  2,  2,  2,  2,  2,  2,  1,  3 } ,
                 new Integer[] {  3,  2,  3,  2,  3,  2,  3,  3 } ,
@@ -35,16 +35,16 @@ public class IntervalManager {
                 new Integer[] { 25,  2, 25,  2,  2,  3 } ,
                 new Integer[] { 28,  4, 26,  3  },
                 new Integer[] { 60,  3  },
-                new Integer[] {  1,  1  } // for tests
+                new Number [] {  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1,  0.1  } // for tests
         };
         IntervalType types[] = new IntervalType[] { RUN, WALK };
         for (int s = 0 ; s < lstWeeks.length ; s++) {
-            Integer[] semaine = lstWeeks[s];
+            Number[] semaine = lstWeeks[s];
             List<IntervalDescription> lst = new ArrayList<IntervalDescription>(semaine.length + 1);
-            lst.add(new IntervalDescription(WARM_UP, 10 * SECOND));
+            lst.add(new IntervalDescription(WARM_UP, (long) (10.0 * SECOND)));
             int type = 0;
             for (int i = 0 ; i < semaine.length ; i++) {
-                lst.add(new IntervalDescription(types[type], semaine[i] * MINUTE));
+                lst.add(new IntervalDescription(types[type], (long) (semaine[i].doubleValue() * MINUTE)));
                 type = 1 - type;
             }
             mapWeeks.put(s + 1, lst);

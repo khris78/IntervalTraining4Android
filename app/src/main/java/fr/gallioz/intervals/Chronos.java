@@ -23,6 +23,7 @@
 package fr.gallioz.intervals;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -32,6 +33,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.LinearLayout;
@@ -60,7 +62,8 @@ public class Chronos extends Activity {
     private static final int LIST_BACKGROUND_SELECTED = Color.LTGRAY;
     private static final int LIST_BACKGROUND_UNSELECTED = Color.TRANSPARENT;
 
-    private LinearLayout l1;
+    private ScrollView svList;
+    private LinearLayout llList;
     private TextView countText;
     private TextView countInvText;
     private Button startBtn;
@@ -119,7 +122,8 @@ public class Chronos extends Activity {
 
         });
 
-        l1 = (LinearLayout) this.findViewById(R.id.listCount);
+        svList = (ScrollView) this.findViewById(R.id.scrollView);
+        llList = (LinearLayout) this.findViewById(R.id.listCount);
 
         intervals = IntervalManager.getWeekIntervals(17);
 
@@ -138,7 +142,7 @@ public class Chronos extends Activity {
                             Chronos.this.displayedTime = 0;
                             Chronos.this.startTime = System.currentTimeMillis();
                             Chronos.this.timeBeforeSuspension = 0;
-                            l1.getChildAt(curInterval).setBackgroundColor(LIST_BACKGROUND_SELECTED);
+                            llList.getChildAt(curInterval).setBackgroundColor(LIST_BACKGROUND_SELECTED);
                             setTextViewColorAccordingToType(null, intervals.get(0).getType());
                         } else {
                             Toast.makeText(getBaseContext(), "No interval to play", Toast.LENGTH_LONG).show();
@@ -215,7 +219,7 @@ public class Chronos extends Activity {
     }
 
     private void initializeIntervalsList() {
-        l1.removeAllViews();
+        llList.removeAllViews();
 
         if (intervals == null) {
             return;
@@ -233,7 +237,7 @@ public class Chronos extends Activity {
             tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
             tv.setTypeface(Typeface.DEFAULT_BOLD);
 
-            Chronos.this.l1.addView(tv);
+            Chronos.this.llList.addView(tv);
         }
 
         // Display the total
@@ -244,7 +248,7 @@ public class Chronos extends Activity {
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
         tv.setTypeface(Typeface.DEFAULT_BOLD);
 
-        Chronos.this.l1.addView(tv);
+        Chronos.this.llList.addView(tv);
     }
 
     private void setTextViewColorAccordingToType(TextView tv, IntervalType type) {
@@ -265,14 +269,15 @@ public class Chronos extends Activity {
     }
 
     private void setCurInterval(int newCurInterval) {
-        if (curInterval >= 0 &&  curInterval < l1.getChildCount()) {
-            l1.getChildAt(curInterval).setBackgroundColor(LIST_BACKGROUND_UNSELECTED);
+        if (curInterval >= 0 &&  curInterval < llList.getChildCount()) {
+            llList.getChildAt(curInterval).setBackgroundColor(LIST_BACKGROUND_UNSELECTED);
         }
 
         curInterval = newCurInterval;
 
         if (curInterval >= 0 &&  curInterval < intervals.size()) {
-            l1.getChildAt(curInterval).setBackgroundColor(LIST_BACKGROUND_SELECTED);
+            View curTime = llList.getChildAt(curInterval);
+            curTime.setBackgroundColor(LIST_BACKGROUND_SELECTED);
             dingBeforeIntervalEnd.clear();
             IntervalDescription iDesc = intervals.get(curInterval);
             for (int i = 3 ; i > 0 ; i--) {
@@ -281,6 +286,15 @@ public class Chronos extends Activity {
                     dingBeforeIntervalEnd.add(t);
                 }
             }
+            View visibleTarget =
+                    (curInterval + 1 < llList.getChildCount()
+                            ? llList.getChildAt(curInterval + 1)
+                            : llList.getChildAt(curInterval));
+            Rect rect = new Rect();
+            visibleTarget.getHitRect(rect);
+            svList.requestChildRectangleOnScreen(llList, rect, false);
+            curTime.getHitRect(rect);
+            svList.requestChildRectangleOnScreen(llList, rect, false);
         }
     }
 
