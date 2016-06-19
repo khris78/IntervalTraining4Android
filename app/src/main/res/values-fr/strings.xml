@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chronomètre fractionné</string>
+    <string name="start">Démarrer</string>
+    <string name="reStart">Redémarrer</string>
+    <string name="stop">Arrêter</string>
+    <string name="reinitialize">Réinitialiser</string>
+    <string name="exit">Quitter</string>
+    <string name="run">Course</string>
+    <string name="walk">Marche</string>
+    <string name="warmup">Préparation</string>
+    <string name="total">Total</string>
+    <string name="week">Semaine</string>
+    <string name="countDown">temps restant</string>
+    <string name="display">Afficher:</string>
+    <string name="fractions">fractions</string>
+</resources>

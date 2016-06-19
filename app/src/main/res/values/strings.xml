@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Interval Training</string>
+    <string name="start">Start</string>
+    <string name="reStart">Re-start</string>
+    <string name="stop">Stop</string>
+    <string name="reinitialize">Reinitialize</string>
+    <string name="exit">Exit</string>
+    <string name="run">Run</string>
+    <string name="walk">Walk</string>
+    <string name="warmup">Warm-up</string>
+    <string name="total">Total</string>
+    <string name="week">Week</string>
+    <string name="countDown">count down</string>
+    <string name="display">Display:</string>
+    <string name="fractions">fractions</string>
+</resources>
