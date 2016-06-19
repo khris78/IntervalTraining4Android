@@ -26,6 +26,6 @@ As the pyledevehat chronometer I used as a model, this project is released under
 It contains the following external resources :
 * Sounds "ding.wav" and "dingding.wav" : extracted from https://www.freesound.org/people/JohnsonBrandEditing/sounds/173932/ (sound by JohnsonBrandEditing, License : Creative Commons 0)
 * .gitignore : from https://github.com/github/gitignore (Licence : CC0 1.0)
-
+* icon 'chronometer.png' from https://pixabay.com/en/icon-stopwatch-clock-time-black-157350/ (CC0)
 
 
