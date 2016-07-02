@@ -114,36 +114,62 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <Spinner
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerWeek"
-        android:backgroundTint="@android:color/transparent"
-        android:layout_weight="1"
-        android:gravity="center_vertical" />
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="20px"
-        android:layout_weight="500"
-        android:gravity="top">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/scrollView"
-            android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="20">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/listCount">
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/default_session_label"
+                android:id="@+id/planLbl"
+                android:textColor="@android:color/black"/>
 
-            </LinearLayout>
-        </ScrollView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/default_session_label"
+                android:id="@+id/sessionLbl"
+                android:textColor="@android:color/black"
+                android:layout_weight="200"
+                android:layout_gravity="center_vertical|left"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/select_session"
+            android:id="@+id/selSessionBtn"
+            android:layout_gravity="right"
+            android:layout_weight="1"/>
+
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/scrollView"
+        android:fillViewport="true"
+        android:layout_weight="500">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listCount">
+
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:orientation="horizontal"

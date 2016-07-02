@@ -15,4 +15,12 @@
     <string name="display">Display:</string>
     <string name="fractions">fractions</string>
     <string name="finished">Finished</string>
+    <string name="msgNoInterval">No interval</string>
+    <string name="beginnerPlan">Begginer plan</string>
+    <string name="testPlan">Test plan</string>
+    <string name="export">Export</string>
+    <string name="select_session">Select session</string>
+    <string name="default_session_label">None</string>
+    <string name="plan">Plan : </string>
+    <string name="session">Session : </string>
 </resources>

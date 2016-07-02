@@ -1,4 +1,4 @@
-package fr.gallioz.intervals;
+package fr.gallioz.intervals.utils;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -6,6 +6,8 @@ import android.media.SoundPool;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import fr.gallioz.intervals.R;
 
 public class SoundManager {
 
